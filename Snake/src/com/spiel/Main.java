@@ -7,10 +7,10 @@ import javax.swing.JFrame;
 public class Main extends JFrame {
    static JFrame frame;
 
-    public Main(int DELAY) {
+    public Main(int geschwindigkeit) {
         frame = new JFrame();
         frame.setVisible(true);
-        frame.add(new Spiel(DELAY));
+        frame.add(new Spiel(geschwindigkeit));
         frame.setResizable(false);
         frame.pack();
         frame.setTitle("Snake");

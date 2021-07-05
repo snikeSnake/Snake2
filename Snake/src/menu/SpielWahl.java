@@ -105,14 +105,16 @@ public class SpielWahl extends JFrame{
         gross.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Main main = new Main(140);
+                frame.setVisible(false);
             }
         });
 
         klein.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Main main = new Main(200);
+                frame.setVisible(false);
             }
         });
 

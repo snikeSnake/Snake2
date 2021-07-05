@@ -16,10 +16,11 @@ import javax.swing.*;
 
 public class Spiel extends JPanel implements ActionListener {
 
-    private final int breite = 300;
-    private final int feldgroesse = 10;
-    private final int feldzahl = 900;
+
     private final int feldanzahl = 30;
+    private final int feldgroesse = 10;
+    private final int breite = feldanzahl*feldgroesse;
+    private final int feldzahl = feldanzahl*feldanzahl;
     private final int geschwindigkeit;
 
     private final int x[] = new int[feldzahl];
