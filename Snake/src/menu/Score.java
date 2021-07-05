@@ -1,6 +1,6 @@
 package menu;
 
-import com.spiel.Board;
+import com.spiel.Spiel;
 import com.spiel.Spieler;
 
 import javax.swing.*;
@@ -31,11 +31,11 @@ public class Score {
         panel.setLayout(null);
 
         if (Spieler.getSprache()){
-            label.setText(Spieler.getNickname()+" hat einen Score von "+ Board.getScore());
+            label.setText(Spieler.getNickname()+" hat einen Score von "+ Spiel.getScore());
             neustart.setText("Neustart");
             hauptmenu.setText("Hauptmenü");
         }else {
-            label.setText(Spieler.getNickname()+" reached a score of "+ Board.getScore());
+            label.setText(Spieler.getNickname()+" reached a score of "+ Spiel.getScore());
           neustart.setText("Restart");
            hauptmenu.setText("Main menu");
         }

@@ -10,7 +10,7 @@ public class Main extends JFrame {
     public Main(int DELAY) {
         frame = new JFrame();
         frame.setVisible(true);
-        frame.add(new Board(DELAY));
+        frame.add(new Spiel(DELAY));
         frame.setResizable(false);
         frame.pack();
         frame.setTitle("Snake");
