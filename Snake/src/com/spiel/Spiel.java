@@ -18,7 +18,7 @@ public class Spiel extends JPanel implements ActionListener {
 
 
     private final int feldanzahl = 30;
-    private final int feldgroesse = 10;
+    private final int feldgroesse = 16;
     private final int breite = feldanzahl*feldgroesse;
     private final int feldzahl = feldanzahl*feldanzahl;
     private final int geschwindigkeit;
@@ -70,8 +70,8 @@ public class Spiel extends JPanel implements ActionListener {
         laenge = 3;
 
         for (int z = 0; z < laenge; z++) {
-            x[z] = 50 - z * 10;
-            y[z] = 50;
+            x[z] = 5*feldgroesse - z * feldgroesse;
+            y[z] = 5*feldgroesse;
         }
         
         apfelSetzen();
