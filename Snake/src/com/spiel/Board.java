@@ -16,15 +16,14 @@ import javax.swing.*;
 
 public class Board extends JPanel implements ActionListener {
 
-    private final int B_WIDTH = 300;
-    private final int B_HEIGHT = 300;
-    private final int DOT_SIZE = 10;
-    private final int ALL_DOTS = 900;
-    private final int RAND_POS = 29;
+    private final int breite = 300;
+    private final int feldgroesse = 10;
+    private final int feldzahl = 900;
+    private final int feldanzahl = 30;
     private final int DELAY;
 
-    private final int x[] = new int[ALL_DOTS];
-    private final int y[] = new int[ALL_DOTS];
+    private final int x[] = new int[feldzahl];
+    private final int y[] = new int[feldzahl];
 
     private static int dots;
     private int apple_x;
@@ -49,7 +48,7 @@ public class Board extends JPanel implements ActionListener {
         setBackground(Color.black);
         setFocusable(true);
 
-        setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
+        setPreferredSize(new Dimension(breite, breite));
         loadImages();
         initGame();
     }
@@ -57,13 +56,13 @@ public class Board extends JPanel implements ActionListener {
 
     private void loadImages() {
 
-        ImageIcon iid = new ImageIcon("src/icons/dot.png");
+        ImageIcon iid = new ImageIcon("Snake/src/icons/dot.png");
         ball = iid.getImage();
 
-        ImageIcon iia = new ImageIcon("src/icons/apple.png");
+        ImageIcon iia = new ImageIcon("Snake/src/icons/apple.png");
         apple = iia.getImage();
 
-        ImageIcon iih = new ImageIcon("src/icons/head.png");
+        ImageIcon iih = new ImageIcon("Snake/src/icons/head.png");
         head = iih.getImage();
     }
 
@@ -134,19 +133,19 @@ public class Board extends JPanel implements ActionListener {
         }
 
         if (leftDirection) {
-            x[0] -= DOT_SIZE;
+            x[0] -= feldgroesse;
         }
 
         if (rightDirection) {
-            x[0] += DOT_SIZE;
+            x[0] += feldgroesse;
         }
 
         if (upDirection) {
-            y[0] -= DOT_SIZE;
+            y[0] -= feldgroesse;
         }
 
         if (downDirection) {
-            y[0] += DOT_SIZE;
+            y[0] += feldgroesse;
         }
     }
 
@@ -159,7 +158,7 @@ public class Board extends JPanel implements ActionListener {
             }
         }
 
-        if (y[0] >= B_HEIGHT) {
+        if (y[0] >= breite) {
             inGame = false;
         }
 
@@ -167,7 +166,7 @@ public class Board extends JPanel implements ActionListener {
             inGame = false;
         }
 
-        if (x[0] >= B_WIDTH) {
+        if (x[0] >= breite) {
             inGame = false;
         }
 
@@ -182,11 +181,11 @@ public class Board extends JPanel implements ActionListener {
 
     private void locateApple() {
 
-        int r = (int) (Math.random() * RAND_POS);
-        apple_x = ((r * DOT_SIZE));
+        int r = (int) (Math.random() * feldanzahl-1);
+        apple_x = ((r * feldgroesse));
 
-        r = (int) (Math.random() * RAND_POS);
-        apple_y = ((r * DOT_SIZE));
+        r = (int) (Math.random() * feldanzahl-1);
+        apple_y = ((r * feldgroesse));
     }
 
     @Override
