@@ -62,18 +62,22 @@ public class Spiel extends JPanel implements ActionListener {
         ImageIcon kp = new ImageIcon("Snake/src/icons/koerper.png");
         koerper = kp.getImage();
 
-        ImageIcon a = new ImageIcon("Snake/src/icons/apfel.png");
+        ImageIcon a = new ImageIcon("Snake/src/icons/apple.png");
         apfel = a.getImage();
 
-        ImageIcon kfw = new ImageIcon("Snake/src/icons/kopf.png");
+        ImageIcon kfw = new ImageIcon("Snake/src/icons/h_g_o.png");
         kopfw = kfw.getImage();
-        ImageIcon kfs = new ImageIcon();
+        ImageIcon kfs = new ImageIcon("Snake/src/icons/h_g_u.png");
         kopfs = kfs.getImage();
-        ImageIcon kfa = new ImageIcon();
+        ImageIcon kfa = new ImageIcon("Snake/src/icons/h_g_l.png");
         kopfa = kfa.getImage();
         ImageIcon kfd = new ImageIcon("Snake/src/icons/head_green.png");
         kopfd = kfd.getImage();
                             }
+    if(Spieler.getFarbe() == "blau"){
+
+
+    }
 
 
     }
