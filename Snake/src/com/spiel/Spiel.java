@@ -40,6 +40,10 @@ public class Spiel extends JPanel implements ActionListener {
     private Timer timer;
     private Image koerper;
     private Image apfel;
+    private Image kopfw;
+    private Image kopfs;
+    private Image kopfa;
+    private Image kopfd;
     private Image kopf;
 
     public Spiel(int g) {
@@ -54,15 +58,24 @@ public class Spiel extends JPanel implements ActionListener {
 
 
     private void bildLaden() {
-
+    if (Spieler.getFarbe()== "grün") {
         ImageIcon kp = new ImageIcon("Snake/src/icons/koerper.png");
         koerper = kp.getImage();
 
         ImageIcon a = new ImageIcon("Snake/src/icons/apfel.png");
         apfel = a.getImage();
 
-        ImageIcon kf = new ImageIcon("Snake/src/icons/kopf.png");
-        kopf = kf.getImage();
+        ImageIcon kfw = new ImageIcon("Snake/src/icons/kopf.png");
+        kopfw = kfw.getImage();
+        ImageIcon kfs = new ImageIcon();
+        kopfs = kfs.getImage();
+        ImageIcon kfa = new ImageIcon();
+        kopfa = kfa.getImage();
+        ImageIcon kfd = new ImageIcon("Snake/src/icons/head_green.png");
+        kopfd = kfd.getImage();
+                            }
+
+
     }
 
     private void starten() {
@@ -87,7 +100,7 @@ public class Spiel extends JPanel implements ActionListener {
         zeichnen(g);
     }
     
-    private void zeichnen(Graphics g) {
+    public void zeichnen(Graphics g) {
         
         if (lebend) {
 
@@ -213,24 +226,28 @@ if (Spieler.getSteuerung()){
                 links = true;
                 hoch = false;
                 runter = false;
+                kopf = kopfa;
             }
 
             if ((key == KeyEvent.VK_D) && (!links)) {
                 rechts = true;
                 hoch = false;
                 runter = false;
+                kopf = kopfd;
             }
 
             if ((key == KeyEvent.VK_W) && (!runter)) {
                 hoch = true;
                 rechts = false;
                 links = false;
+                kopf = kopfw;
             }
 
             if ((key == KeyEvent.VK_S) && (!hoch)) {
                 runter = true;
                 rechts = false;
                 links = false;
+                kopf = kopfs;
             }
         }else {
     int key = e.getKeyCode();
@@ -239,24 +256,28 @@ if (Spieler.getSteuerung()){
         links = true;
         hoch = false;
         runter = false;
+        kopf = kopfa;
     }
 
     if ((key == KeyEvent.VK_RIGHT) && (!links)) {
         rechts = true;
         hoch = false;
         runter = false;
+        kopf = kopfd;
     }
 
     if ((key == KeyEvent.VK_UP) && (!runter)) {
         hoch = true;
         rechts = false;
         links = false;
+        kopf = kopfw;
     }
 
     if ((key == KeyEvent.VK_DOWN) && (!hoch)) {
         runter = true;
         rechts = false;
         links = false;
+        kopf = kopfs;
     }
         }
         }

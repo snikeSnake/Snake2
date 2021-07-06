@@ -25,4 +25,5 @@ public class Spieler {
     public static void setFarbe(String f){
         farbe=f;
     }
+    public static String getFarbe(){return farbe;}
 }
