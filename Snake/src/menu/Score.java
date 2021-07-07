@@ -6,7 +6,7 @@ import com.spiel.Spieler;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+//GUI zeigt den erzielten Score an
 public class Score {
     JFrame frame;
     JPanel panel;
@@ -15,6 +15,7 @@ public class Score {
     JButton hauptmenu;
 
     public Score(){
+        //baut Fenster
         frame = new JFrame();
         panel = new JPanel();
         label = new JLabel();
@@ -49,6 +50,7 @@ public class Score {
         hauptmenu.setBounds(10,200,268,20);
         panel.add(hauptmenu);
 
+        //geht zur SpielWahl
         neustart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,6 +59,7 @@ public class Score {
             }
         });
 
+        //geht zur Startseite
         hauptmenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

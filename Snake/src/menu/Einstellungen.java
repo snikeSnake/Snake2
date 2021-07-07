@@ -6,7 +6,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//GUI zum ändern der Einstellungen
+
 public class Einstellungen extends JFrame{
+
+
     JFrame frame;
     JPanel panel;
     JLabel steuerung;
@@ -17,9 +21,11 @@ public class Einstellungen extends JFrame{
     JButton farbeGruen;
     JButton farbeRot;
     JButton farbeBlau;
+    JButton farbeGelb;
     JButton zurueck;
 
     public Einstellungen(){
+        //baut das Fenster
         frame = new JFrame();
         panel = new JPanel();
         steuerung = new JLabel();
@@ -30,6 +36,7 @@ public class Einstellungen extends JFrame{
         farbeGruen = new JButton();
         farbeBlau = new JButton();
         farbeRot = new JButton();
+        farbeGelb = new JButton();
         zurueck = new JButton();
 
         frame.setTitle("SnikeSnake");
@@ -41,6 +48,7 @@ public class Einstellungen extends JFrame{
 
         panel.setLayout(null);
 
+        //setzt den Text in Abhängigkeit der Sprache
         if(Spieler.getSprache()){
             steuerung.setText("Steuerung");
             sprache.setText("Sprache");
@@ -49,6 +57,7 @@ public class Einstellungen extends JFrame{
             farbeBlau.setText("Blau");
             farbeGruen.setText("Grün");
             farbeRot.setText("Rot");
+            farbeGelb.setText("Gelb");
             zurueck.setText("Zurück");
         }else{
             steuerung.setText("Controls");
@@ -58,6 +67,7 @@ public class Einstellungen extends JFrame{
             farbeBlau.setText("Blue");
             farbeGruen.setText("Green");
             farbeRot.setText("Red");
+            farbeGelb.setText("Yellow");
             zurueck.setText("Back");
         }
 
@@ -88,15 +98,20 @@ public class Einstellungen extends JFrame{
         farbeGruen.setBounds(120,90,150,20);
         panel.add(farbeGruen);
 
-        farbeBlau.setBounds(120,130,150,20);
+        farbeBlau.setBounds(120,120,150,20);
         panel.add(farbeBlau);
 
-        farbeRot.setBounds(120,170,150,20);
+        farbeRot.setBounds(120,150,150,20);
         panel.add(farbeRot);
+
+        farbeGelb.setBounds(120,180,150,20);
+        panel.add(farbeGelb);
 
         zurueck.setBounds(10,230,268,20);
         panel.add(zurueck);
 
+
+        // wenn steuerungsWahl gedrückt wird ändert sich die Steuerung
         steuerungWahl.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -114,6 +129,7 @@ public class Einstellungen extends JFrame{
             }
         });
 
+        // wenn sprachWahl gedrückt wird ändert sich die Sprache
         spracheWahl.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -131,8 +147,10 @@ public class Einstellungen extends JFrame{
                     farbeBlau.setText("Blue");
                     farbeGruen.setText("Green");
                     farbeRot.setText("Red");
+                    farbeGelb.setText("Yellow");
 
                     zurueck.setText("Back");
+
                     if(Spieler.getSteuerung()){
                         steuerungWahl.setText("WASD");
                     }else {
@@ -151,6 +169,7 @@ public class Einstellungen extends JFrame{
                     farbeBlau.setText("Blau");
                     farbeGruen.setText("Grün");
                     farbeRot.setText("Rot");
+                    farbeGelb.setText("Gelb");
 
                     zurueck.setText("Zurück");
 
@@ -163,6 +182,7 @@ public class Einstellungen extends JFrame{
             }
         });
 
+        // wenn farbeRot gedrückt wird ändert sich die Farbe zu Rot
         farbeRot.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -170,6 +190,7 @@ public class Einstellungen extends JFrame{
             }
         });
 
+        // wenn farbeRot gedrückt wird ändert sich die Farbe zu Blau
         farbeBlau.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -177,13 +198,23 @@ public class Einstellungen extends JFrame{
             }
         });
 
-        farbeRot.addActionListener(new ActionListener() {
+        // wenn farbeRot gedrückt wird ändert sich die Farbe zu Grün
+        farbeGruen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Spieler.setFarbe("grün");
             }
         });
 
+        // wenn farbeRot gedrückt wird ändert sich die Farbe zu Gelb
+        farbeGelb.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Spieler.setFarbe("gelb");
+            }
+        });
+
+        // geht zurück auf die Startseite
         zurueck.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

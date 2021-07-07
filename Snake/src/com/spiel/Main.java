@@ -8,9 +8,10 @@ public class Main extends JFrame {
    static JFrame frame;
 
     public Main(int geschwindigkeit) {
+        //baut das Snake Fenster
         frame = new JFrame();
         frame.setVisible(true);
-        frame.add(new Spiel(geschwindigkeit));
+        frame.add(new Spiel(geschwindigkeit));//baut das Spiel
         frame.setResizable(false);
         frame.pack();
         frame.setTitle("Snake");
@@ -22,6 +23,7 @@ public class Main extends JFrame {
         frame.setVisible(b);
     }
     public static void main(String[] args) {
+        //öfnet die Startseite
         Startseite startseite = new Startseite();
     }
 }

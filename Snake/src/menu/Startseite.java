@@ -5,7 +5,7 @@ import com.spiel.Spieler;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+// GUI lässt den Spieler den Spieler die Einstellungenöffnen, die Spielwahl öffnen und einen Nicknamen wählen
 public class Startseite extends JFrame {
 
     JFrame frame;
@@ -15,9 +15,10 @@ public class Startseite extends JFrame {
     JLabel nickname;
     JTextField neuNickname;
     JButton nicknameBestätigen;
+    JLabel nicknameFalsch;
 
     public Startseite(){
-
+        //baut Fenster
     frame = new JFrame();
     panel = new JPanel();
     einstellung = new JButton();
@@ -25,6 +26,7 @@ public class Startseite extends JFrame {
     nickname = new JLabel();
     neuNickname = new JTextField();
     nicknameBestätigen = new JButton();
+    nicknameFalsch = new JLabel();
 
     frame.setTitle("SnikeSnake");
     frame.setResizable(false);
@@ -44,6 +46,8 @@ public class Startseite extends JFrame {
        nickname.setText("Nickname");
 
        nicknameBestätigen.setText("Nickname Bestätigen");
+
+       nicknameFalsch.setText("Dieser Nickname ist nicht zugelassen");
     } else{
 
         einstellung.setText("Settings");
@@ -53,6 +57,8 @@ public class Startseite extends JFrame {
         nickname.setText("Nickname");
 
         nicknameBestätigen.setText("Confirm nickname");
+
+        nicknameFalsch.setText("This nickname is invalid");
     }
 
     einstellung.setBounds(0,0,300,30);
@@ -70,37 +76,46 @@ public class Startseite extends JFrame {
     nicknameBestätigen.setBounds(50,235,180,20);
     panel.add(nicknameBestätigen);
 
+    nicknameFalsch.setBounds(10,170,180,20);
+    nicknameFalsch.setVisible(false);
+    panel.add(nicknameFalsch);
+
     frame.setVisible(true);
 
+
+    //geht zu den Einstellungen
     einstellung.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             Einstellungen einstellungen = new Einstellungen();
-            startseiteSchliessen();
-        }
+            frame.setVisible(false);        }
     });
 
-
+    // geht zur SpielWahl
     spielen.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             SpielWahl spielWahl = new SpielWahl();
-            startseiteSchliessen();
-        }
+            frame.setVisible(false);        }
     });
 
+    //setzt einen Nickname
     nicknameBestätigen.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-           if(neuNickname.getText()!=null){
+           //bedingung für den Nicknamen:nicht leer, keine Leerzeichen,nur 16 lang
+            if(neuNickname.getText()!=null && !neuNickname.getText().contains(" ") && neuNickname.getText().length() <=16 ){
                Spieler.setNickname(neuNickname.getText());
+               nicknameFalsch.setVisible(false);
            }
+            else{
+                //zeigt Fehlermeldung
+                nicknameFalsch.setVisible(true);
+            }
         }
     });
 
 
     }
-public void startseiteSchliessen(){
-        frame.setVisible(false);
 }
-}
+

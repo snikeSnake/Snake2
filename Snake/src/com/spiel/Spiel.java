@@ -1,7 +1,6 @@
 package com.spiel;
 
 import menu.Score;
-import com.spiel.*;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,63 +16,69 @@ import javax.swing.*;
 public class Spiel extends JPanel implements ActionListener {
 
 
-    private final int feldanzahl = 16;
-    private final int feldgroesse = 16;
-    private final int breite = feldanzahl*feldgroesse;
-    private final int feldzahl = feldanzahl*feldanzahl;
-    private final int geschwindigkeit;
+    private final int feldanzahl = 16;//Größe des Spielfeldes
+    private final int feldgroesse = 16;//Größe in Pixeln eines einzelnen Feldes
+    private final int breite = feldanzahl*feldgroesse;//Größe in Pixeln des Spielfeldes
+    private final int feldzahl = feldanzahl*feldanzahl;//Anzahl der Felder
+    private final int geschwindigkeit;//Geschwindigkeit der Schlange
 
-    private final int x[] = new int[feldzahl];
-    private final int y[] = new int[feldzahl];
+    private final int x[] = new int[feldzahl];//Position x eines Schlangenteils
+    private final int y[] = new int[feldzahl];//Position y eines Schlangenteils
 
-    private static int laenge;
-    private int apfel_x;
-    private int apfel_y;
+    private static int laenge;//Die Länge der Schlange
+    private int apfel_x;//Position x des Apfels
+    private int apfel_y;//Position x des Apfels
 
+
+    //Bewegungsrichtung der Schlange
     private boolean links = false;
     private boolean rechts = true;
     private boolean hoch = false;
     private boolean runter = false;
 
+    //Status der Schlange:lebend/tot
     private boolean lebend = true;
 
+    //Timer für die Zeitverzögerung
     private Timer timer;
+    //Bilder
     private Image koerper;
     private Image apfel;
     private Image kopfw;
     private Image kopfs;
     private Image kopfa;
     private Image kopfd;
+    //Kann kopfa/kopfw/kopfs/kopfd sein
     private Image kopf;
 
+    //Konstruktor
     public Spiel(int g) {
-        geschwindigkeit = g;
-        addKeyListener(new TAdapter());
-        setBackground(Color.black);
+        geschwindigkeit = g;//setzt die Geschwindigkeit der Schlange fest
+        addKeyListener(new TAdapter());//aktiviert einen TAdapter
+        setBackground(Color.black);//setzt die Hintergrundfarbe
         setFocusable(true);
-        setPreferredSize(new Dimension(breite, breite));
+        setPreferredSize(new Dimension(breite, breite));//setzt die Breite
         bildLaden();
         starten();
     }
 
-
+//lädt alle nötigen Bilder (unterschiedlich nach Farbeinstellungen)
     private void bildLaden() {
     if (Spieler.getFarbe()== "grün") {
         ImageIcon kp = new ImageIcon("Snake/src/icons/koerper.png");
         koerper = kp.getImage();
-
         ImageIcon a = new ImageIcon("Snake/src/icons/apple.png");
         apfel = a.getImage();
-
         ImageIcon kfw = new ImageIcon("Snake/src/icons/h_g_o.png");
         kopfw = kfw.getImage();
         ImageIcon kfs = new ImageIcon("Snake/src/icons/h_g_u.png");
         kopfs = kfs.getImage();
         ImageIcon kfa = new ImageIcon("Snake/src/icons/h_g_l.png");
         kopfa = kfa.getImage();
-        ImageIcon kfd = new ImageIcon("Snake/src/icons/head_green.png");
+        ImageIcon kfd = new ImageIcon("Snake/src/icons/h_g_r.png");
         kopfd = kfd.getImage();
                             }
+
     if(Spieler.getFarbe() == "blau"){
 
 
@@ -83,33 +88,40 @@ public class Spiel extends JPanel implements ActionListener {
     }
 
     private void starten() {
+        laenge = 3;//setzt die Startlänge der Schlange
 
-        laenge = 3;
-
+        //setzt die x und y Positionen für alle Startkörperteile
         for (int z = 0; z < laenge; z++) {
-            x[z] = 5*feldgroesse - z * feldgroesse;
-            y[z] = 5*feldgroesse;
+            x[z] = 3*feldgroesse - z * feldgroesse;
+            y[z] = 0;
         }
         
         apfelSetzen();
 
+        //startet den timer abhängig von der Geschwindigkeit
         timer = new Timer(geschwindigkeit, this);
         timer.start();
     }
 
+    //zeichnet die Grafik
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         zeichnen(g);
     }
-    
+
     public void zeichnen(Graphics g) {
         
-        if (lebend) {
+        if (lebend) {//wenn die Schlange noch lebt
 
-            g.drawImage(apfel, apfel_x, apfel_y, this);
 
+            kopfSetzen();
+
+            //malt den Apfel
+                g.drawImage(apfel, apfel_x, apfel_y, this);
+
+                // makt den Schlangenkörper
             for (int z = 0; z < laenge; z++) {
                 if (z == 0) {
                     g.drawImage(kopf, x[z], y[z], this);
@@ -121,17 +133,19 @@ public class Spiel extends JPanel implements ActionListener {
             Toolkit.getDefaultToolkit().sync();
 
         } else {
-
-            Score score =new Score();
-            Main.setJFrame(false);
+            //wenn nicht am leben
+            Score score =new Score();//öffnet das Scoreboard
+            Main.setJFrame(false);//schliesst das Spiel
         }        
     }
 
+    //berechnet den Score
    public static String getScore() {
      String  score = Integer.toString(laenge-3);
         return score;
    }
 
+   //prüft ob der Apfel gegessen wurde
     private void apfelEssen() {
 
         if ((x[0] == apfel_x) && (y[0] == apfel_y)) {
@@ -141,6 +155,24 @@ public class Spiel extends JPanel implements ActionListener {
         }
     }
 
+    //Setzt die Richtung des Kopfes und das daraufhin zu verwendete Bild
+    public void kopfSetzen(){
+        if(hoch){
+            kopf = kopfw;
+
+        }else  if(links){
+            kopf = kopfa;
+
+        }else if(rechts){
+            kopf = kopfd;
+
+        }else if(runter){
+            kopf = kopfs;
+
+        }
+    }
+
+    //Bewegt die Schlange um ein Feld in belibige Richtung
     private void bewegen() {
 
         for (int z = laenge; z > 0; z--) {
@@ -165,15 +197,17 @@ public class Spiel extends JPanel implements ActionListener {
         }
     }
 
+    //Überprüft ob die Schlange tot ist
     private void tot() {
 
+        //prüft ob die Schlange sich selbst isst
         for (int z = laenge; z > 0; z--) {
 
             if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
                 lebend = false;
             }
         }
-
+        // prüft ob die Schlange eine Wand trifft
         if (y[0] >= breite) {
             lebend = false;
         }
@@ -189,14 +223,18 @@ public class Spiel extends JPanel implements ActionListener {
         if (x[0] < 0) {
             lebend = false;
         }
-        
+
+
+        //stopptden Timerr fals die Schlange tot ist
         if (!lebend) {
             timer.stop();
         }
     }
 
+    //setzt einen neuen Apfel
     private void apfelSetzen() {
 
+        //zufällige Wahl der x und y Koordinate
         int r = (int) (Math.random() * feldanzahl-1);
         apfel_x = ((r * feldgroesse));
 
@@ -206,17 +244,18 @@ public class Spiel extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        //aktualisiert das Spiel im vom Timer gegebenen Zeitinterval
         if (lebend) {
 
             apfelEssen();
             tot();
             bewegen();
         }
-
+        //zeichnet alle Grafiken neu
         repaint();
     }
 
+    //überprüft ob es Tastenanschläge gab
     private class TAdapter extends KeyAdapter {
 
 
@@ -224,6 +263,7 @@ public class Spiel extends JPanel implements ActionListener {
         public void keyPressed(KeyEvent e) {
 
 if (Spieler.getSteuerung()){
+    //überprüft WASD-Anschläge
             int key = e.getKeyCode();
 
             if ((key == KeyEvent.VK_A) && (!rechts)) {
@@ -255,7 +295,7 @@ if (Spieler.getSteuerung()){
             }
         }else {
     int key = e.getKeyCode();
-
+//überpruft Pfeiltatsenanschläge
     if ((key == KeyEvent.VK_LEFT) && (!rechts)) {
         links = true;
         hoch = false;

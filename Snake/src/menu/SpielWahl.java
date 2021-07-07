@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// GUI lässt den Spieler zwischen Spielmodis entscheiden
 public class SpielWahl extends JFrame{
     JFrame frame;
     JPanel panel;
@@ -18,6 +19,7 @@ public class SpielWahl extends JFrame{
     JButton zurueck;
 
     public SpielWahl (){
+        //baut Fenster
         frame = new JFrame();
         panel = new JPanel();
         klassisch = new JButton();
@@ -70,6 +72,7 @@ public class SpielWahl extends JFrame{
         zurueck.setBounds(10,230,268,20);
         panel.add(zurueck);
 
+        //geht zur Startseite
         zurueck.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -78,6 +81,7 @@ public class SpielWahl extends JFrame{
             }
         });
 
+        //öffnet ein klassisches Spiel
         klassisch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,6 +90,7 @@ public class SpielWahl extends JFrame{
             }
         });
 
+        //öffnet ein schnelles Spiel
         schnell.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -93,7 +98,7 @@ public class SpielWahl extends JFrame{
                 frame.setVisible(false);
             }
         });
-
+        //öffnet ein langsames Spiel
         langsam.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -101,7 +106,7 @@ public class SpielWahl extends JFrame{
                 frame.setVisible(false);
             }
         });
-
+        //öffnet ein Spiel mit großem Feld
         gross.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -109,7 +114,7 @@ public class SpielWahl extends JFrame{
                 frame.setVisible(false);
             }
         });
-
+        //öffnet ein Spiel mit kleinen Feld
         klein.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
