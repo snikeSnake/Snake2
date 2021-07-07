@@ -27,7 +27,7 @@ public class Spiel extends JPanel implements ActionListener {
 
     private static int laenge;//Die Länge der Schlange
     private int apfel_x;//Position x des Apfels
-    private int apfel_y;//Position x des Apfels
+    private int apfel_y;//Position y des Apfels
 
 
     //Bewegungsrichtung der Schlange
