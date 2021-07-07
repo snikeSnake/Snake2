@@ -15,7 +15,7 @@ import javax.swing.*;
 
 public class Spiel extends JPanel implements ActionListener {
 
-
+    private boolean freigabe = true;
     private final int feldanzahl ;//Größe des Spielfeldes
     private final int feldgroesse = 16;//Größe in Pixeln eines einzelnen Feldes
     private final int breite ;//Größe in Pixeln des Spielfeldes
@@ -287,6 +287,7 @@ public class Spiel extends JPanel implements ActionListener {
             apfelEssen();
             tot();
             bewegen();
+            freigabe=true;
         }
         //zeichnet alle Grafiken neu
         repaint();
@@ -298,7 +299,7 @@ public class Spiel extends JPanel implements ActionListener {
 
         @Override
         public void keyPressed(KeyEvent e) {
-
+if (freigabe){
 if (Spieler.getSteuerung()){
     //überprüft WASD-Anschläge
             int key = e.getKeyCode();
@@ -361,6 +362,8 @@ if (Spieler.getSteuerung()){
         kopf = kopfs;
     }
         }
+        }
+        freigabe=false;
         }
     }
 }
