@@ -16,14 +16,14 @@ import javax.swing.*;
 public class Spiel extends JPanel implements ActionListener {
 
 
-    private final int feldanzahl = 16;//Größe des Spielfeldes
+    private final int feldanzahl ;//Größe des Spielfeldes
     private final int feldgroesse = 16;//Größe in Pixeln eines einzelnen Feldes
-    private final int breite = feldanzahl*feldgroesse;//Größe in Pixeln des Spielfeldes
-    private final int feldzahl = feldanzahl*feldanzahl;//Anzahl der Felder
+    private final int breite ;//Größe in Pixeln des Spielfeldes
+    private final int feldzahl;//Anzahl der Felder
     private final int geschwindigkeit;//Geschwindigkeit der Schlange
 
-    private final int x[] = new int[feldzahl];//Position x eines Schlangenteils
-    private final int y[] = new int[feldzahl];//Position y eines Schlangenteils
+    private int[] x;//Position x eines Schlangenteils
+    private int[] y;//Position y eines Schlangenteils
 
     private static int laenge;//Die Länge der Schlange
     private int apfel_x;//Position x des Apfels
@@ -52,7 +52,12 @@ public class Spiel extends JPanel implements ActionListener {
     private Image kopf;
 
     //Konstruktor
-    public Spiel(int g) {
+    public Spiel(int g,int feld) {
+        feldanzahl = feld;
+        breite = feldanzahl*feldgroesse;
+        feldzahl = feldanzahl*feldanzahl;
+        x = new int[feldzahl];
+        y = new int[feldzahl];
         geschwindigkeit = g;//setzt die Geschwindigkeit der Schlange fest
         addKeyListener(new TAdapter());//aktiviert einen TAdapter
         setBackground(Color.black);//setzt die Hintergrundfarbe

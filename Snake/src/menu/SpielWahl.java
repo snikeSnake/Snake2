@@ -85,7 +85,7 @@ public class SpielWahl extends JFrame{
         klassisch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main main = new Main(140);
+                Main main = new Main(140,16);
                 frame.setVisible(false);
             }
         });
@@ -94,7 +94,7 @@ public class SpielWahl extends JFrame{
         schnell.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main main = new Main(90);
+                Main main = new Main(90,16);
                 frame.setVisible(false);
             }
         });
@@ -102,7 +102,7 @@ public class SpielWahl extends JFrame{
         langsam.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main main = new Main(200);
+                Main main = new Main(200,16);
                 frame.setVisible(false);
             }
         });
@@ -110,7 +110,7 @@ public class SpielWahl extends JFrame{
         gross.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main main = new Main(140);
+                Main main = new Main(140,32);
                 frame.setVisible(false);
             }
         });
@@ -118,7 +118,7 @@ public class SpielWahl extends JFrame{
         klein.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main main = new Main(200);
+                Main main = new Main(200,8);
                 frame.setVisible(false);
             }
         });

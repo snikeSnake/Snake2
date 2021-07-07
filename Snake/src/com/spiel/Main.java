@@ -7,11 +7,11 @@ import javax.swing.JFrame;
 public class Main extends JFrame {
    static JFrame frame;
 
-    public Main(int geschwindigkeit) {
+    public Main(int geschwindigkeit,int feld) {
         //baut das Snake Fenster
         frame = new JFrame();
         frame.setVisible(true);
-        frame.add(new Spiel(geschwindigkeit));//baut das Spiel
+        frame.add(new Spiel(geschwindigkeit, feld));//baut das Spiel
         frame.setResizable(false);
         frame.pack();
         frame.setTitle("Snake");
