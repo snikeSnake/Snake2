@@ -64,11 +64,11 @@ public class Spiel extends JPanel implements ActionListener {
 
 //lädt alle nötigen Bilder (unterschiedlich nach Farbeinstellungen)
     private void bildLaden() {
-    if (Spieler.getFarbe()== "grün") {
-        ImageIcon kp = new ImageIcon("Snake/src/icons/koerper.png");
-        koerper = kp.getImage();
         ImageIcon a = new ImageIcon("Snake/src/icons/apple.png");
         apfel = a.getImage();
+    if (Spieler.getFarbe()== "grün") {
+        ImageIcon kp = new ImageIcon("Snake/src/icons/body_green.png");
+        koerper = kp.getImage();
         ImageIcon kfw = new ImageIcon("Snake/src/icons/h_g_o.png");
         kopfw = kfw.getImage();
         ImageIcon kfs = new ImageIcon("Snake/src/icons/h_g_u.png");
@@ -77,12 +77,44 @@ public class Spiel extends JPanel implements ActionListener {
         kopfa = kfa.getImage();
         ImageIcon kfd = new ImageIcon("Snake/src/icons/h_g_r.png");
         kopfd = kfd.getImage();
-                            }
-
-    if(Spieler.getFarbe() == "blau"){
-
-
+                            }else
+    if (Spieler.getFarbe()== "blau") {
+        ImageIcon kp = new ImageIcon("Snake/src/icons/body_blue.png");
+        koerper = kp.getImage();
+        ImageIcon kfw = new ImageIcon("Snake/src/icons/h_b_o.png");
+        kopfw = kfw.getImage();
+        ImageIcon kfs = new ImageIcon("Snake/src/icons/h_b_u.png");
+        kopfs = kfs.getImage();
+        ImageIcon kfa = new ImageIcon("Snake/src/icons/h_b_l.png");
+        kopfa = kfa.getImage();
+        ImageIcon kfd = new ImageIcon("Snake/src/icons/h_b_r.png");
+        kopfd = kfd.getImage();
+    }else
+    if (Spieler.getFarbe()== "rot") {
+        ImageIcon kp = new ImageIcon("Snake/src/icons/body_red.png");
+        koerper = kp.getImage();
+        ImageIcon kfw = new ImageIcon("Snake/src/icons/h_r_o.png");
+        kopfw = kfw.getImage();
+        ImageIcon kfs = new ImageIcon("Snake/src/icons/h_r_u.png");
+        kopfs = kfs.getImage();
+        ImageIcon kfa = new ImageIcon("Snake/src/icons/h_r_l.png");
+        kopfa = kfa.getImage();
+        ImageIcon kfd = new ImageIcon("Snake/src/icons/h_r_r.png");
+        kopfd = kfd.getImage();
+    }else
+    if (Spieler.getFarbe()== "gelb") {
+        ImageIcon kp = new ImageIcon("Snake/src/icons/body_yellow.png");
+        koerper = kp.getImage();
+        ImageIcon kfw = new ImageIcon("Snake/src/icons/h_y_o.png");
+        kopfw = kfw.getImage();
+        ImageIcon kfs = new ImageIcon("Snake/src/icons/h_y_u.png");
+        kopfs = kfs.getImage();
+        ImageIcon kfa = new ImageIcon("Snake/src/icons/h_y_l.png");
+        kopfa = kfa.getImage();
+        ImageIcon kfd = new ImageIcon("Snake/src/icons/h_y_r.png");
+        kopfd = kfd.getImage();
     }
+
 
 
     }
