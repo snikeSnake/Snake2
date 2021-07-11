@@ -240,7 +240,7 @@ public class Spiel extends JPanel implements ActionListener {
         //prüft ob die Schlange sich selbst isst
         for (int z = laenge; z > 0; z--) {
 
-            if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
+            if ( (x[0] == x[z]) && (y[0] == y[z])) {
                 lebend = false;
             }
         }
