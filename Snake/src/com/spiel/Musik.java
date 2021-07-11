@@ -12,7 +12,7 @@ public Musik() throws UnsupportedAudioFileException, IOException, LineUnavailabl
     AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
     Clip clip = AudioSystem.getClip();
     clip.open(audioInputStream);
-
+    clip.loop(Clip.LOOP_CONTINUOUSLY);
     clip.start();
 
 
