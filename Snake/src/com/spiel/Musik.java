@@ -3,7 +3,6 @@ package com.spiel;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Musik {
 
@@ -14,7 +13,5 @@ public Musik() throws UnsupportedAudioFileException, IOException, LineUnavailabl
     clip.open(audioInputStream);
     clip.loop(Clip.LOOP_CONTINUOUSLY);
     clip.start();
-
-
 }
 }

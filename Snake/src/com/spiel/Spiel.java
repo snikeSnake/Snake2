@@ -270,14 +270,33 @@ public class Spiel extends JPanel implements ActionListener {
 
     //setzt einen neuen Apfel
     private void apfelSetzen() {
-
+        boolean ap= true;
         //zufällige Wahl der x und y Koordinate
         int r = (int) (Math.random() * feldanzahl-1);
-        apfel_x = ((r * feldgroesse));
+       int rx = ((r * feldgroesse));
 
         r = (int) (Math.random() * feldanzahl-1);
-        apfel_y = ((r * feldgroesse));
-    }
+       int ry = ((r * feldgroesse));
+
+
+       for (int z = laenge; z >= 0; z--) {
+
+            if ( (rx == x[z]) && (ry == y[z])) {
+                 ap = false;
+            }
+
+       }
+
+        if (ap){
+           apfel_x=rx;
+            apfel_y= ry;
+        }else {
+            apfelSetzen();
+        }
+
+        }
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
