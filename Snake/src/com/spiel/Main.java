@@ -20,15 +20,7 @@ public class Main extends JFrame {
         frame.setTitle("Snake");
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        try {
-            Musik musik = new Musik();
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public static void setJFrame (boolean b){
