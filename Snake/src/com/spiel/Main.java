@@ -20,7 +20,6 @@ public class Main extends JFrame {
         frame.setTitle("Snake");
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
     public static void setJFrame (boolean b){
