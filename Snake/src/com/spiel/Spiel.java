@@ -15,7 +15,7 @@ import javax.swing.*;
 
 public class Spiel extends JPanel implements ActionListener {
 
-    private boolean freigabe = true;
+    private boolean freigabe = true;//Gibt Tastatur frei
     private final int feldanzahl ;//Größe des Spielfeldes
     private final int feldgroesse = 16;//Größe in Pixeln eines einzelnen Feldes
     private final int breite ;//Größe in Pixeln des Spielfeldes
@@ -51,13 +51,15 @@ public class Spiel extends JPanel implements ActionListener {
     //Kann kopfa/kopfw/kopfs/kopfd sein
     private Image kopf;
 
-    //Konstruktor
+
     public Spiel(int g,int feld) {
+        //Variablen berechnen
         feldanzahl = feld;
         breite = feldanzahl*feldgroesse;
         feldzahl = feldanzahl*feldanzahl;
         x = new int[feldzahl];
         y = new int[feldzahl];
+
         geschwindigkeit = g;//setzt die Geschwindigkeit der Schlange fest
         addKeyListener(new TAdapter());//aktiviert einen TAdapter
         setBackground(Color.black);//setzt die Hintergrundfarbe
@@ -158,7 +160,7 @@ public class Spiel extends JPanel implements ActionListener {
             //malt den Apfel
                 g.drawImage(apfel, apfel_x, apfel_y, this);
 
-                // makt den Schlangenkörper
+                // malt den Schlangenkörper
             for (int z = 0; z < laenge; z++) {
                 if (z == 0) {
                     g.drawImage(kopf, x[z], y[z], this);
@@ -278,19 +280,22 @@ public class Spiel extends JPanel implements ActionListener {
         r = (int) (Math.random() * feldanzahl-1);
        int ry = ((r * feldgroesse));
 
-
+//prüft ob die Position auf der Schlange ist
        for (int z = laenge; z >= 0; z--) {
 
             if ( (rx == x[z]) && (ry == y[z])) {
+                //wenn ja
                  ap = false;
             }
 
        }
 
         if (ap){
+            //wenn nicht
            apfel_x=rx;
             apfel_y= ry;
         }else {
+            //wenn schon
             apfelSetzen();
         }
 

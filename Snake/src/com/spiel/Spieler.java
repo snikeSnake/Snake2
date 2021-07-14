@@ -1,6 +1,7 @@
 package com.spiel;
 //speicher alle Einstellungen
 public class Spieler {
+
     //setzt die Standarteinstellungen
     public static boolean deutsch= false;
     public static boolean wasd = true;

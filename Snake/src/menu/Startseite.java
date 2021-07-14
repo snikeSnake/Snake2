@@ -39,7 +39,7 @@ public class Startseite extends JFrame {
 
     if(Spieler.getSprache()){
 
-       einstellung.setText("menu.Einstellungen");
+       einstellung.setText("Einstellungen");
 
        spielen.setText("Spielen");
 
